@@ -16,6 +16,7 @@ function HomePage() {
   });
     
     function createD3Chart() {
+      d3.select("#d3-chart").select("svg").remove();
     var data = datasource.datasets[0].data;
     var labels = datasource.labels;
     console.log("is this running")
@@ -82,6 +83,7 @@ function HomePage() {
           newChartData.datasets[0].data[i] = res.data.budget[i].budget;
           newChartData.labels[i] = res.data.budget[i].title;
         }
+        
         setChartData(newChartData);
         //createD3Chart();
       })
@@ -96,6 +98,7 @@ function HomePage() {
   useEffect(() => {
    
     if (datasource.labels.length > 0) {
+     
       createD3Chart();
     }
   }, [datasource]);
